@@ -24,14 +24,14 @@ function App() {
   const [todos, setTodos] = useState(DUMMY_TODOS);
 
   const setSomeTodoAsDone = (id) => {
-    const newTodos = todos.map(todo => {
-      if (todo.id === id){
-        return {...todo, status: true};
+    const newTodos = todos.map(todo => { // copying the original state to a new one
+      if (todo.id === id){ 
+        return {...todo, status: true}; // if the id is same as received as param
       }
-      return todo;
+      return todo; // if not, just return it how it was
     });
 
-    setTodos(newTodos);    
+    setTodos(newTodos); // set the Todos to the "new"/update TodoList
   }
 
   return (
