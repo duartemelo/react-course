@@ -1,3 +1,8 @@
+# About
+
+This simple web app was created while I was learning React throughout this course.  
+It is a simple to-do list, where you can define items as done and create new ones.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
