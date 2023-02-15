@@ -1,0 +1,15 @@
+.card{
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: rgb(229, 229, 229);
+  border-radius: 10px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  width: calc(100vw - 500px);
+}
+
+.mt-30{
+  margin-top: 30px;
+}

@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import './App.css';
-import ToDoList from './Components/ToDo/ToDoList';
+import ToDoList from './Components/ToDo/ToDoList/ToDoList';
+import Card from './Components/UI/Card';
+import ToDoForm from './Components/ToDo/ToDoForm/ToDoForm';
 
 const DUMMY_TODOS = [
   {
@@ -34,10 +36,26 @@ function App() {
     setTodos(newTodos); // set the Todos to the "new"/update TodoList
   }
 
+  const addTodo = (todo) => {
+    setTodos(todos => {
+      return [...todos, todo];
+    })
+  }
+
+  const idValues = todos.map(todo => todo.id);
+  const maxId = Math.max(...idValues);
+
   return (
     <div className="App">
-      <h1>My To-do List</h1>
-      <ToDoList todos={todos} setSomeTodoAsDone={setSomeTodoAsDone}/>
+      <h1>My To-do List (unfinished)</h1>
+      <Card>
+        <ToDoForm onAddTodo={addTodo} maxId={maxId}/>
+      </Card>
+      <Card className="mt-30">
+        {todos.length === 0 && <p>No Todos!</p>}
+        {todos.length > 0 && <ToDoList todos={todos} setSomeTodoAsDone={setSomeTodoAsDone}/>}
+      </Card>
+      
     </div>
   );
 }
