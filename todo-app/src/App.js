@@ -38,7 +38,9 @@ function App() {
 
   const addTodo = (todo) => {
     setTodos(todos => {
-      return [...todos, todo];
+      const updatedTodos = [...todos];
+      updatedTodos.unshift(todo);
+      return updatedTodos;
     })
   }
 

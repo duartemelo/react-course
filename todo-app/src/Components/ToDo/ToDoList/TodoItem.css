@@ -4,7 +4,8 @@
   margin: 0 auto;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-  
+  cursor: pointer;
+  padding: 10px 0px 10px 10px;
 }
 
 .todo-item:not(:first-child){
