@@ -1,0 +1,38 @@
+.error-container{
+  background-color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  box-shadow: 0 0 0 max(100vh, 100vw) rgba(0, 0, 0, .6);
+}
+
+@media only screen and (min-width: 768px){
+  .error-container{
+    width: 500px;
+  }
+}
+
+.error-container__title-bar{
+  background-color: orange;
+  color: white;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.error-container__title-bar h3 {
+  margin: 0;
+  margin-left: 10px;
+}
+
+.error-container__message-bar p{
+  margin-left: 10px;
+}
+
+.error-container button{
+  float: right;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}

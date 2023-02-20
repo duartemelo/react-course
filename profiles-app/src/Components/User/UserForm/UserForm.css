@@ -1,0 +1,32 @@
+.user-form label{
+  display: block;
+  margin-left: 25px;
+  font-weight: 500;
+}
+
+.user-form input{
+  -webkit-appearance: none;
+  border: 1px solid gray;
+  height: 20px;
+  display: block;
+  width: calc( 100% - 50px);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+}
+
+.user-form button{
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 500;
+  display: block;
+  width: calc(100% - 84px);
+}
+
+@media only screen and (min-width: 768px){
+  .user-form button{
+    width: 100px;
+    margin-left: 24px;
+  }
+}

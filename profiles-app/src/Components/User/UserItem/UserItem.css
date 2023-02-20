@@ -1,0 +1,13 @@
+.user-item{
+  border: 1px solid gray;
+  width: calc(100% - 50px);
+  margin: 0 auto;
+}
+
+.user-item p{
+  margin: 10px 0px 10px 10px;
+}
+
+.user-item:not(:first-child){
+  margin-top: 20px;
+}
