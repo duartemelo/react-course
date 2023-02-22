@@ -4,7 +4,7 @@ import "./UserItem.css";
 const UserItem = props => {
   return (
     <div className="user-item">
-      <p>{props.name} ({props.age} years old)</p>
+      <p>{props.children}</p>
     </div>
   )
 }

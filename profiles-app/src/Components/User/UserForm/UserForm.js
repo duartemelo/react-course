@@ -27,13 +27,14 @@ const UserForm = (props) => {
       return;
     }
 
-    if (parseInt(age) < 0){
+    if (+age < 0){ // o + força q seja convertido para numero, ou parseInt(age)
       setError("Invalid age", "Please insert a valid age.");
       return;
     }
 
     
     const user = {
+      id: Math.random().toString(),
       name: name,
       age: age
     }
