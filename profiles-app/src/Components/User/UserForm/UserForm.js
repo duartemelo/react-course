@@ -1,56 +1,55 @@
-import React, {useState} from "react";
+import React, { useRef } from "react";
 import "./UserForm.css";
 import Button from "../../UI/Button/Button";
 
 const UserForm = (props) => {
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
-
-  const onChangeName = event => {
-    setName(event.target.value);
-  }
-
-  const onChangeAge = event => {
-    setAge(event.target.value);
-  }
+  const nameInputRef = useRef();
+  const ageInputRef = useRef();
 
   const setError = (errorTitle, errorMessage) => {
     props.setError(errorTitle, errorMessage);
-  }
+  };
 
   const userAddHandler = (event) => {
     event.preventDefault();
+    const enteredName = nameInputRef.current.value;
+    const enteredAge = ageInputRef.current.value;
 
-    if (name.trim().length === 0 || age.trim().length === 0){
+    if (enteredName.trim().length === 0 || enteredAge.trim().length === 0) {
       // Enviar erro para ecrã a dizer que os campos têm de estar preenchidos
       setError("Invalid fields", "Please insert non-null fields.");
       return;
     }
 
-    if (+age < 0){ // o + força q seja convertido para numero, ou parseInt(age)
+    if (+enteredAge < 0) {
+      // o + força q seja convertido para numero, ou parseInt(age)
       setError("Invalid age", "Please insert a valid age.");
       return;
     }
 
-    
     const user = {
       id: Math.random().toString(),
-      name: name,
-      age: age
-    }
+      name: enteredName,
+      age: enteredAge,
+    };
     //console.log(user);
     props.onAddUser(user);
-    setName("");
-    setAge("");
-  }
-
+    nameInputRef.current.value = ""; // rarely do this!
+    ageInputRef.current.value = ""; // rarely do this!
+  };
 
   return (
     <form className="user-form" onSubmit={userAddHandler}>
       <label>Name</label>
-      <input type="text" onChange={onChangeName} value={name} />
+      <input
+        type="text"
+        ref={nameInputRef}
+      />
       <label className="mt-10">Age</label>
-      <input type="number" onChange={onChangeAge} value={age}/>
+      <input
+        type="number"
+        ref={ageInputRef}
+      />
       <Button type="submit">Add User</Button>
     </form>
   );

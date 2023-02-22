@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import "./App.css";
 import Card from "./Components/UI/Card/Card";
 import UserForm from "./Components/User/UserForm/UserForm";
 import UserList from "./Components/User/UserList/UserList";
-import Error from "./Components/UI/Error/Error";
+import Error from "./Components/UI/ErrorModal/ErrorModal";
 
 const DUMMY_USERS = [
   {
@@ -53,7 +53,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <Fragment>
       <Card>
         <UserForm onAddUser={addUser} setError={setErrorHandler} />
       </Card>
@@ -67,7 +67,7 @@ function App() {
           closeError={closeErrorHandler}
         />
       )}
-    </div>
+    </Fragment>
   );
 }
 
