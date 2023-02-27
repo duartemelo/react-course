@@ -25,7 +25,7 @@ const passwordReducer = (state, action) => {
   return { value: "", isValid: false };
 }
 
-const Login = (props) => {
+const Login = () => {
   const [formIsValid, setFormIsValid] = useState(false);
 
   const [emailState, dispatchEmail] = useReducer(emailReducer, {
@@ -47,7 +47,7 @@ const Login = (props) => {
     const identifier = setTimeout(() => {
       console.log("Checking form validity!");
       setFormIsValid(
-        emailState.isValid && passwordState.isValid
+        emailIsValid && passwordIsValid
       );
     }, 500); // apenas é executado após 500 sec do utilizador parar de escrever
 
@@ -56,6 +56,8 @@ const Login = (props) => {
       clearTimeout(identifier); // limpa o timer anterior
     }; // cleanup function, ocorre sempre antes da próxima execução deste useEffect (ver console.logs)
   }, [emailIsValid, passwordIsValid]); // o código da função corre quando um destes elementos das dependencies muda
+  // adicionar sempre as variáveis que se usam dentro do useEffect como dependencies!
+
 
   const emailChangeHandler = (event) => {
     dispatchEmail({type: 'USER_INPUT', val: event.target.value});
