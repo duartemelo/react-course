@@ -90,7 +90,7 @@ const Login = () => {
     <Card className={classes.login}>
       <form onSubmit={submitHandler}>
         <Input
-          classNames={['control', emailState.isValid === false && 'invalid'].filter(Boolean)}
+          isValid={emailIsValid}
           type="email"
           id="email"
           label="E-mail"
@@ -100,7 +100,7 @@ const Login = () => {
         />
 
         <Input
-          classNames={['control', passwordState.isValid === false && 'invalid'].filter(Boolean)}
+          isValid={passwordIsValid}
           type="password"
           id="password"
           label="Password"
