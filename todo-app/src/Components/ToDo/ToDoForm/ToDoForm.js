@@ -1,4 +1,6 @@
 import React, {useState} from "react";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 const ToDoForm = (props) => {
   const [todoText, setTodoText] = useState('');
@@ -22,11 +24,12 @@ const ToDoForm = (props) => {
 
 
   return (
-    <form onSubmit={onSubmitHandler}>
-      <label>Text</label>
-      <input type="text" value={todoText} onChange={onChangeText}></input>
-      <button type="submit">Submit</button>
-    </form>
+    <Form onSubmit={onSubmitHandler}>
+      <Form.Group className="mb-3">
+        <Form.Control type="text" placeholder="Enter task" value={todoText} onChange={onChangeText}/>
+      </Form.Group>
+      <Button type="submit">Submit</Button>
+    </Form>
   );
 };
 

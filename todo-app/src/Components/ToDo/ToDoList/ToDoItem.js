@@ -8,7 +8,7 @@ const ToDoItem = (props) => {
 
   return (
     <div className="todo-item" onClick={setAsDoneClickHandler}>
-      <h3>{props.text}</h3>
+      <p>{props.text}</p>
     </div>
   );
 };

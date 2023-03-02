@@ -49,8 +49,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>My To-do List (unfinished)</h1>
-      <Card>
+      <Card className="mt-30">
         <ToDoForm onAddTodo={addTodo} maxId={maxId}/>
       </Card>
       <Card className="mt-30">
