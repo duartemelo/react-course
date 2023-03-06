@@ -4,17 +4,23 @@ import Modal from "../UI/Modal/Modal";
 import CartContext from "../../store/cart-context";
 
 const Cart = (props) => {
-  const cartCtx = useContext(CartContext);
+  //const cartCtx = useContext(CartContext);
   
   const onCloseHandler = () => {
-    cartCtx.onCartClose();
+    //cartCtx.onCartClose();
+    props.onClose();
   }
 
-  const cartItems = (
-    <ul className={classes["cart-items"]}>
-      {cartCtx.cart.map((item) => {
-        return <li key={item.id}>{item.name}</li>;
-      })}
+  // const cartItems = (
+  //   <ul className={classes["cart-items"]}>
+  //     {cartCtx.cart.map((item) => {
+  //       return <li key={item.id}>{item.name}</li>;
+  //     })}
+  //   </ul>
+  // );
+
+  const cartItems = (<ul>
+    <li>Sushi</li>
     </ul>
   );
 
