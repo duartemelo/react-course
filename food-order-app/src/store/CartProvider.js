@@ -51,7 +51,7 @@ const cartReducer = (state, action) => {
       updatedItems[existingCartItemIndex] = updatedItem;
 
     } else { // last item (remove entire item)
-      updatedItems.splice(existingCartItemIndex, 1);
+      updatedItems = updatedItems.filter(item => item.id !== action.id);
     }
 
     return{
@@ -59,7 +59,6 @@ const cartReducer = (state, action) => {
       totalAmount: updatedTotalAmount
     }
   }
-  return defaultCartState;
 };
 
 const CartProvider = (props) => {
