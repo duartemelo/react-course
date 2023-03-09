@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import Button from './components/UI/Button/Button';
 
 import './App.css';
@@ -9,11 +9,13 @@ function App() {
 
   console.log('APP RUNNING');
 
-  const toggleParagraphHandler = () => {
+  const toggleParagraphHandler = useCallback(() => {
     setShowParagraph((prevState) => {
       return !prevState;
     })
-  }
+  }, []);
+  // useCallback vai checkar se a função não mudou, e vai usar sempre a mesma função, a não ser que alguma dependency mude
+  // isto, em conjunto com o React.memo, vai fazer com que por exemplo o Button não dê re-render
 
   return (
     <div className="app">

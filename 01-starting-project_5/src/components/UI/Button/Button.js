@@ -16,4 +16,5 @@ const Button = (props) => {
   );
 };
 
-export default Button;
+export default React.memo(Button); // ele dá re-render igual porque o app volta a dar render
+// o q quer dizer q a função é passada de novo nos props
