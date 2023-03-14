@@ -1,5 +1,6 @@
 import { Fragment, Component } from "react";
 import UsersContext from "../store/users-context";
+import ErrorBoundary from "./ErrorBoundary";
 import classes from "./UserFinder.module.css";
 import Users from "./Users";
 
@@ -20,14 +21,15 @@ class UserFinder extends Component {
     };
   }
 
-  componentDidMount() { // No need for ifs, because DidMount only runs once (when component mounts)
+  componentDidMount() {
+    // No need for ifs, because DidMount only runs once (when component mounts)
     // Send http request...
-    this.setState({filteredUsers: this.context.users});
+    this.setState({ filteredUsers: this.context.users });
   }
 
   componentDidUpdate(prevProps, prevState) {
     // called whenever this component is re-evaluated (because state changed, for example)
-    if (prevState.searchTerm !== this.state.searchTerm){
+    if (prevState.searchTerm !== this.state.searchTerm) {
       this.setState({
         filteredUsers: DUMMY_USERS.filter((user) =>
           user.name.includes(this.state.searchTerm)
@@ -46,7 +48,9 @@ class UserFinder extends Component {
         <div className={classes.finder}>
           <input type="search" onChange={this.searchChangeHandler.bind(this)} />
         </div>
-        <Users users={this.state.filteredUsers} />
+        <ErrorBoundary>
+          <Users users={this.state.filteredUsers} />
+        </ErrorBoundary>
       </Fragment>
     );
   }
