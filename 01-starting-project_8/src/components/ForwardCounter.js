@@ -1,8 +1,5 @@
-import { useState, useEffect } from 'react';
-
-import Card from './Card';
-
-import useCounter from '../hooks/use-counter';
+import Card from "./Card";
+import useCounter from "../hooks/use-counter";
 
 const ForwardCounter = () => {
   const counter = useCounter();
