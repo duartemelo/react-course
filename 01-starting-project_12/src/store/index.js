@@ -16,6 +16,11 @@ const storeReducer = (
       counter: state.counter - 1,
     };
   }
+  if (action.type === "increase") {
+    return {
+      counter: state.counter + action.value,
+    };
+  }
 
   return state;
 };
