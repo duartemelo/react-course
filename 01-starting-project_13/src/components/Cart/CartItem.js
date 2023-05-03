@@ -3,14 +3,14 @@ import { useDispatch } from "react-redux";
 import { cartActions } from "../../store";
 
 const CartItem = (props) => {
-  const { title, quantity, total, price } = props.item;
+  const { id, title, quantity, total, price } = props.item;
 
   const dispatch = useDispatch();
 
   const handleMinusClick = () => {
     dispatch(
       cartActions.remove_product({
-        title,
+        id,
         amount: 1,
       })
     );
@@ -19,7 +19,7 @@ const CartItem = (props) => {
   const handlePlusClick = () => {
     dispatch(
       cartActions.add_product({
-        title,
+        id,
         amount: 1,
       })
     );

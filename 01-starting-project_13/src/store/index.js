@@ -24,44 +24,45 @@ const cartSlice = createSlice({
     },
     add_product(state, action) {
       let copiedProducts = [...state.products];
+      const newProduct = action.payload;
 
       // verifica se o produto já existe
       const index = copiedProducts.findIndex(
-        (product) => product.title === action.payload.title
+        (product) => product.id === newProduct.id
       );
       if (index !== -1) {
-        copiedProducts[index].amount += action.payload.amount;
+        copiedProducts[index].amount += newProduct.amount;
       } else {
-        copiedProducts.push(action.payload);
+        copiedProducts.push(newProduct);
       }
 
       state.products = copiedProducts;
 
       // increase value
       cartSlice.caseReducers.increase(state, {
-        payload: action.payload.amount,
+        payload: newProduct.amount,
         type: Number,
       });
     },
     remove_product(state, action) {
       let copiedProducts = [...state.products];
+      const newProduct = action.payload;
 
       // o produto tem de existir!
       const index = copiedProducts.findIndex(
-        (product) => product.title === action.payload.title
+        (product) => product.id === newProduct.id
       );
-      if (copiedProducts[index].amount > action.payload.amount) {
-        copiedProducts[index].amount -= action.payload.amount;
+      if (copiedProducts[index].amount > newProduct.amount) {
+        copiedProducts[index].amount -= newProduct.amount;
       } else {
-        console.log("slice");
         copiedProducts.splice(index, 1);
       }
 
       state.products = copiedProducts;
 
-      // increase value
+      // decrease value
       cartSlice.caseReducers.decrease(state, {
-        payload: action.payload.amount,
+        payload: newProduct.amount,
         type: Number,
       });
     },

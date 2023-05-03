@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 
 const Cart = (props) => {
   const cart = useSelector((state) => state.cart.products);
-  console.log(cart);
 
   return (
     <Card className={classes.cart}>
@@ -15,6 +14,7 @@ const Cart = (props) => {
           <CartItem
             key={index}
             item={{
+              id: product.id,
               title: product.title,
               quantity: product.amount,
               total: product.price * product.amount,
