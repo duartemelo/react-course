@@ -23,45 +23,41 @@ const cartSlice = createSlice({
       }
     },
     add_product(state, action) {
-      let copiedProducts = [...state.products];
       const newProduct = action.payload;
 
       // verifica se o produto já existe
-      const index = copiedProducts.findIndex(
+      const index = state.products.findIndex(
         (product) => product.id === newProduct.id
       );
       if (index !== -1) {
-        copiedProducts[index].amount += newProduct.amount;
+        state.products[index].amount += newProduct.amount;
       } else {
-        copiedProducts.push(newProduct);
+        state.products.push(newProduct);
       }
-
-      state.products = copiedProducts;
 
       // increase value
       cartSlice.caseReducers.increase(state, {
+        // could do state.totalAmount += newProduct.amount, but in decrease, there is a verification!
         payload: newProduct.amount,
         type: Number,
       });
     },
     remove_product(state, action) {
-      let copiedProducts = [...state.products];
       const newProduct = action.payload;
 
-      // o produto tem de existir!
-      const index = copiedProducts.findIndex(
+      // o produto existe, neste caso
+      const index = state.products.findIndex(
         (product) => product.id === newProduct.id
       );
-      if (copiedProducts[index].amount > newProduct.amount) {
-        copiedProducts[index].amount -= newProduct.amount;
+      if (state.products[index].amount > newProduct.amount) {
+        state.products[index].amount -= newProduct.amount;
       } else {
-        copiedProducts.splice(index, 1);
+        state.products.splice(index, 1);
       }
-
-      state.products = copiedProducts;
 
       // decrease value
       cartSlice.caseReducers.decrease(state, {
+        // could do state.totalAmount -= newProduct.amount, but in decrease, there is a verification!
         payload: newProduct.amount,
         type: Number,
       });
