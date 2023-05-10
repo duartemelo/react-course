@@ -9,7 +9,7 @@ const CartItem = (props) => {
 
   const handleMinusClick = () => {
     dispatch(
-      cartActions.remove_product({
+      cartActions.removeProduct({
         id,
         amount: 1,
       })
@@ -18,7 +18,7 @@ const CartItem = (props) => {
 
   const handlePlusClick = () => {
     dispatch(
-      cartActions.add_product({
+      cartActions.addProduct({
         id,
         amount: 1,
       })

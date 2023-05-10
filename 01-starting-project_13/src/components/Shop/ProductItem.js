@@ -9,7 +9,7 @@ const ProductItem = (props) => {
 
   const addClickHandler = () => {
     dispatch(
-      cartActions.add_product({
+      cartActions.addProduct({
         id,
         title,
         price,
